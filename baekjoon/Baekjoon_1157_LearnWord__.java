@@ -1,7 +1,6 @@
 package algorithm;
 
 import java.io.*;
-import java.util.Arrays;
 
 
 public class Baekjoon_1157_LearnWord__ {
@@ -14,24 +13,25 @@ public class Baekjoon_1157_LearnWord__ {
 		int[] alpha = new int[26];
 		
 		for (int i = 0; i < word.length(); i++) {
-			alpha[(int)word.charAt(i)-65]++;
+			alpha[(int)word.charAt(i)-'A']++;
 		}
 		
 		int maxNum = 0;
-		int maxIdx = 0;
 		for (int i = 0; i < alpha.length; i++) {
 			if (maxNum < alpha[i]) {
 				maxNum = alpha[i];
-				maxIdx = i;
 			}
 		}
-		char result = (char)(maxIdx+65);
+		char result = (char)(maxIdx+'A');
 		int cnt = 0;
 		for (int i : alpha) {
 			if (i == maxNum)
 				cnt++;
-			if (cnt >= 2)
+				result = i;
+			if (cnt >= 2) {
 				result = '?';
+				break;
+			}
 		}
 		
 		bw.write(result);
