@@ -17,11 +17,9 @@ public class BitCode_209_MinimunSizeSubarraySum {
 		while (endIdx < nums.length) {
 			sum += nums[endIdx];
 			
-			if (sum == 7) {
-				if (minimum > endIdx-startIdx+1) minimum = endIdx-startIdx+1;
-				sum -= nums[startIdx++] + nums[endIdx];
-			}
-			else if (sum > 7) {
+			if (sum >= 7) {
+				if (sum == 7)
+					minimum = Math.min(minimum, endIdx-startIdx+1);
 				sum -= nums[startIdx++] + nums[endIdx];
 			} else {
 				endIdx++;
